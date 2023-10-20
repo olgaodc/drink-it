@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <div className={styles.footerWrapper}>
       <Container>
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
           <span>@ Drink.it 2023</span>
-        </div>
+        </footer>
       </Container>
     </div>
   )

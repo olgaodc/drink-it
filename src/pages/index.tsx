@@ -5,17 +5,19 @@ import CocktailsBanner from '@/components/CocktailsBanner/CocktailsBanner';
 import CocktailBanner from '@/components/CocktailBanner/CocktailBanner';
 import Footer from '@/components/Footer/Footer';
 import HeroBox from '../components/HeroBox/HeroBox';
+import Recommendations from '@/components/Recommendations/Recommendations';
 
 export default function HomePage() {
  return (
   <>
     <Navbar/>
     <div className={styles.contentWrapper}>
-      <div className={styles.content}>
+      <main className={styles.content}>
         <HeroBox />
+        <Recommendations />
         <CocktailsBanner />
         <CocktailBanner />
-      </div>
+      </main>
     </div>
     <Footer />
   </>

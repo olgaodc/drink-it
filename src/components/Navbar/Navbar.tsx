@@ -5,9 +5,9 @@ import Container from '../Container/Container';
 
 const Navbar = () => {
   return (
-    <div className={styles.navbarWrapper}>
+    <header className={styles.navbarWrapper}>
       <Container>
-        <div className={styles.navbar}>
+        <nav className={styles.navbar}>
           <Link className={styles.logo} href={'/'}>
             Drink
             <span className={styles.logoMe}>
@@ -31,9 +31,9 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
       </Container>
-    </div>
+    </header>
   )
 }
 
