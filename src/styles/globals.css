@@ -6,4 +6,13 @@ body {
     margin: 0;
     font-family: 'Roboto Condensed', sans-serif;
     background-color: #DBD4C5;
+    color: #2e1c2f;
+}
+
+a {
+    color: #2e1c2f;
+}
+
+.ant-carousel .slick-slider .slick-list {
+    border-radius: 15px;
 }

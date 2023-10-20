@@ -8,7 +8,7 @@
 .logo {
     font-weight: 700;
     font-size: 26px;
-    color: black;
+    /* color: #2e1c2f; */
     text-decoration: none;
 }
 
@@ -30,7 +30,6 @@
 
 .itemLink {
     text-decoration: none;
-    color: black;
     font-size: 18px;
     transition: 0.3s;
 }
