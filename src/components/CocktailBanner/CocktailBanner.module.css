@@ -1,0 +1,38 @@
+.bgColor {
+    background-color: #F4B715;
+}
+
+.bannerWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.banner {
+    /* width: 80%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0;
+}
+
+.image {
+    height: 220px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 32px;
+}
+
+.subtitle, .title {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+.title {
+    font-size: 90px;
+    margin: 10px 0 20px;
+}

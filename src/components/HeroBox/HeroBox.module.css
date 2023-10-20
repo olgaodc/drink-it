@@ -1,0 +1,42 @@
+.heroBoxWrapper {
+    height: calc(100vh - 62px);
+}
+
+.heroBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin: 50px 0;
+}
+
+.heroInfo {
+    max-width: 450px;
+}
+
+.subtitle {
+    font-size: 32px;
+}
+
+.subtitle, .title {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+.title {
+    font-size: 90px;
+    margin: 10px 0 20px;
+}
+
+.description {
+    line-height: 140%;
+    font-size: 18px;
+    margin: 0;
+}
+
+.image {
+    height: 550px;
+    border-radius: 400px 80px 200px 80px;
+}

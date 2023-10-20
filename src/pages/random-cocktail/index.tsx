@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from './randomCocktail.module.css';
 import Navbar from "@/components/Navbar/Navbar";
+import Container from "@/components/Container/Container";
 
 const RandomCocktailPage = () => {
   const [cocktail, setCocktail] = useState<any>();
@@ -44,7 +45,7 @@ const RandomCocktailPage = () => {
     <>
       <Navbar />
       <div className={styles.cocktailSectionWrapper}>
-        <div className={styles.container}>
+        <Container>
           <div className={styles.cocktailSection}>
             {cocktail ? (
               <div className={styles.cocktailCard}>
@@ -68,7 +69,7 @@ const RandomCocktailPage = () => {
             ) : (<>Loading...</>)}
 
           </div>
-        </div>
+        </Container>
       </div>
     </>
 

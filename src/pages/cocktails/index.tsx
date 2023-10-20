@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CocktailCard from '../../components/CocktailCard/CocktailCard';
 import Navbar from '../../components/Navbar/Navbar';
 import styles from './cocktailsPage.module.css';
+import Container from "@/components/Container/Container";
 
 type CocktailProps = {
   idDrink: string,
@@ -55,7 +56,7 @@ const CocktailsPage = () => {
     <>
       <Navbar />
       <div className={styles.cocktailsSectionWrapper}>
-        <div className={styles.container}>
+        <Container>
           <div className={styles.buttonsWrapper}>
             <button
               onClick={() => setDisplayedCocktails(() => cocktails?.filter((cocktail) => cocktail.strAlcoholic === 'Alcoholic'))}
@@ -109,7 +110,7 @@ const CocktailsPage = () => {
           </div>
           <div className={styles.removeAllButtonWrapper}>
           </div>
-        </div>
+        </Container>
 
       </div>
     </>

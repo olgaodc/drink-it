@@ -2,13 +2,6 @@
     min-width: 100vh;
 }
 
-.container {
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 40px;
-}
-
 .cocktailsSection {
     display: flex;
     flex-wrap: wrap;

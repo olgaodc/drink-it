@@ -1,16 +1,23 @@
-// import { Inter } from 'next/font/google';
+import styles from './styles.module.css';
 import Navbar from '@/components/Navbar/Navbar';
-import styles from './main.module.css';
-import { useState } from 'react';
-import uniqid from 'uniqid';
+import Container from '@/components/Container/Container';
+import HeroBox from '@/components/HeroBox/HeroBox';
+import CocktailsBanner from '@/components/CocktailsBanner/CocktailsBanner';
+import CocktailBanner from '@/components/CocktailBanner/CocktailBanner';
+import Footer from '@/components/Footer/Footer';
 
-export default function Home() {
+export default function HomePage() {
  return (
   <>
     <Navbar/>
-    <div className='container'>
-          
+    <div className={styles.contentWrapper}>
+      <div className={styles.content}>
+        <HeroBox />
+        <CocktailsBanner />
+        <CocktailBanner />
+      </div>
     </div>
+    <Footer />
   </>
  )
 }
