@@ -39,6 +39,7 @@
     width: 700px;
     bottom: -108px;
     right: -60px;
+    -webkit-filter: blur(5px);
     filter: blur(50px);
     z-index: -1;
     display: inline-block;
