@@ -5,6 +5,7 @@
 
 .carouselImage {
     width: 100%;
+    height: calc(100dvh - 72px);
     height: calc(100vh - 72px);
     max-height: 650px;
     object-fit: cover;
