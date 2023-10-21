@@ -1,0 +1,10 @@
+.button {
+    background-color: #E8B20E;
+    border: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: none;
+    height: unset;
+    padding: 5px 25px;
+}

@@ -2,8 +2,17 @@ import React from 'react';
 import styles from './CocktailsBanner.module.css';
 import Container from '../Container/Container';
 import BartenderImage from '../../assets/bartender.png';
+import BlobImage from '../../assets/blob.svg';
+import Button from '../Button/Button';
+import { useRouter } from 'next/router';
 
 const CocktailsBanner = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/cocktails`);
+  }
+  
   return (
     <div className={styles.bgColor}>
       <Container>
@@ -13,9 +22,9 @@ const CocktailsBanner = () => {
             <div className={styles.bannerInfo}>
               <h1 className={styles.subtitle}>Don't know cocktail name?</h1>
               <h2 className={styles.title}>Search by ingredient</h2>
-              <button>Try It</button>
+              <Button onClick={handleClick}>Try It</Button>
+              <img className={styles.blurImage} src={BlobImage.src} alt="" />
             </div>
-
           </div>
         </div>
       </Container>
