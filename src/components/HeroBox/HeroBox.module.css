@@ -1,6 +1,4 @@
 .carouselWrapper {
-    /* height: calc(100vh - 62px);
-    max-height: 650px; */
     position: relative;
     margin-bottom: 10px;
 }
@@ -34,4 +32,19 @@
 .title {
     font-size: 90px;
     margin: 10px 0 20px;
+}
+
+@media (max-width: 576px) {
+    .heroInfo {
+        top: unset;
+        bottom: 12%;
+    }
+
+    .subtitle {
+        font-size: 28px;
+    }
+    
+    .title {
+        font-size: 70px;
+    }
 }

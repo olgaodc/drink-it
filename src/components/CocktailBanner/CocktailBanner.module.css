@@ -1,11 +1,11 @@
 .bgColor {
-    margin: 120px 0 90px;
+    margin: 200px 0 90px;
 }
 
 .bannerWrapper {
     display: flex;
     justify-content: center;
-    position: relative;    
+    position: relative;
 }
 
 .bannerWrapper::after {
@@ -14,16 +14,15 @@
     width: 1000px;
     height: 100%;
     border-radius: 0 20px 20px 0;
-    background-color: #BDD2C6;
+    background-color: #bdd2c6bd;
     top: 0;
-    right: 30%;
+    right: 35%;
     z-index: 1;
 }
 
 .banner {
-    width: 80%;
     display: flex;
-    gap: 80px;
+    gap: 100px;
     justify-content: center;
     align-items: center;
     padding: 70px 0;
@@ -35,21 +34,58 @@
 }
 
 .bannerInfo {
-    max-width: 500px;
+    max-width: 300px;
 }
 
 .subtitle {
-    font-size: 32px;
+    font-size: 28px;
 }
 
-.subtitle, .title {
+.subtitle,
+.title {
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 5px;
     margin: 0;
 }
 
 .title {
-    font-size: 90px;
+    font-size: 70px;
     margin: 10px 0 20px;
+}
+
+
+@media (max-width: 786px) {
+    .bannerWrapper::after {
+        width: 800px;
+        /* height: 100%; */
+        /* border-radius: 0 20px 20px 0; */
+        /* background-color: #bdd2c6bd; */
+        /* top: 0; */
+        right: 50%;
+        /* z-index: 1; */
+    }
+
+    .banner {
+        flex-direction: column-reverse;
+        /* width: 100%; */
+        gap: 30px;
+    }
+
+    .bannerInfo {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .image {
+        height: 350px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+    
+    .title {
+        font-size: 48px;
+    }
 }
