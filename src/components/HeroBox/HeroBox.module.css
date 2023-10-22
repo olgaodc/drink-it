@@ -38,7 +38,7 @@
 @media (max-width: 576px) {
     .heroInfo {
         top: unset;
-        bottom: 12%;
+        bottom: 8%;
     }
 
     .subtitle {

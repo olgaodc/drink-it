@@ -6,16 +6,16 @@
 .banner {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
 }
 
 .image {
-    height: 400px;
+    height: 450px;
 }
 
 .bannerInfo {
     position: relative;
-    padding-top: 250px;
+    padding-top: 300px;
     max-width: 400px;
 }
 
@@ -23,7 +23,8 @@
     font-size: 28px;
 }
 
-.subtitle, .title {
+.subtitle,
+.title {
     font-weight: 500;
     text-transform: uppercase;
     margin: 0;
@@ -39,7 +40,6 @@
     width: 700px;
     bottom: -108px;
     right: -60px;
-    /* -webkit-filter: blur(5px); */
     filter: blur(50px);
     transform: translate3d(0, 0, 0);
     z-index: -1;
@@ -72,14 +72,23 @@
         justify-content: unset;
     }
 
+    .banner {
+        align-items: center;
+    }
+
     .image {
-        height: 350px;
+        align-self: unset;
+    }
+
+    .bannerInfo {
+        align-self: unset;
+        text-align: center;
     }
 
     .subtitle {
         font-size: 20px;
     }
-    
+
     .title {
         font-size: 48px;
     }

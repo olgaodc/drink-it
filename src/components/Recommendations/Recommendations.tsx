@@ -55,10 +55,10 @@ const Recommendations = () => {
               <Meta title="Mojito" />
             </Card>
             <Card cover={<img alt="example" src={CardImage3.src} />} >
-              <Meta title="Margarita" />
+              <Meta title="Negroni" />
             </Card>
             <Card cover={<img alt="example" src={CardImage2.src} />} >
-              <Meta title="Negroni" />
+              <Meta title="Margarita" />
             </Card>
             <Card cover={<img alt="example" src={CardImage4.src} />} >
               <Meta title="Salty Dog" />

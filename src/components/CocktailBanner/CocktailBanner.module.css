@@ -1,14 +1,19 @@
 .bgColor {
-    margin: 200px 0 90px;
+    margin: 200px 0;
 }
 
-.bannerWrapper {
+.banner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* .bannerWrapper {
     display: flex;
     justify-content: center;
     position: relative;
-}
+} */
 
-.bannerWrapper::after {
+/* .bannerWrapper::after {
     position: absolute;
     content: '';
     width: 1000px;
@@ -18,27 +23,57 @@
     top: 0;
     right: 35%;
     z-index: 1;
-}
+} */
 
-.banner {
+/* .banner {
     display: flex;
     gap: 100px;
     justify-content: center;
     align-items: center;
     padding: 70px 0;
     z-index: 5;
-}
+} */
+
+/* .banner {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0;
+    z-index: 5;
+} */
+
+/* .image {
+    height: 400px;
+    object-fit: cover;
+} */
 
 .image {
-    height: 400px;
+    width: 100%;
+    /* max-height: 400px;
+    object-fit: cover; */
+    display: block;
+    border-radius: 10px;
 }
 
+/* .image, .bannerInfo {
+    width: calc(100% / 3);
+} */
+
 .bannerInfo {
-    max-width: 300px;
+    /* max-width: 400px; */
+    background-color: #bdd2c6bd;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    /* text-align: center; */
 }
 
 .subtitle {
-    font-size: 28px;
+    font-size: 16px;
 }
 
 .subtitle,
@@ -49,25 +84,36 @@
 }
 
 .title {
-    font-size: 70px;
+    font-size: 40px;
     margin: 10px 0 20px;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .image:nth-of-type(3){
+        display: none;
+    }
+}
+
+@media (max-width: 530px) {
+    .image:nth-of-type(3){
+        display: block;
+    }
+
+    .image:nth-of-type(2), .image:nth-of-type(4) {
+        display: none;
+    }
 }
 
 
-@media (max-width: 786px) {
+/* @media (max-width: 786px) {
     .bannerWrapper::after {
         width: 800px;
-        /* height: 100%; */
-        /* border-radius: 0 20px 20px 0; */
-        /* background-color: #bdd2c6bd; */
-        /* top: 0; */
         right: 50%;
-        /* z-index: 1; */
     }
 
     .banner {
         flex-direction: column-reverse;
-        /* width: 100%; */
         gap: 30px;
     }
 
@@ -88,4 +134,4 @@
     .title {
         font-size: 48px;
     }
-}
+} */
