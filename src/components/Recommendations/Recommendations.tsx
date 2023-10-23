@@ -1,37 +1,83 @@
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Recommendations.module.css';
 import Container from '../Container/Container';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card } from 'antd';
-import CardImage1 from '../../assets/card-image-1.jpg';
-import CardImage2 from '../../assets/card-image-2.jpg';
-import CardImage3 from '../../assets/card-image-3.jpg';
-import CardImage4 from '../../assets/card-image-4.jpg';
-import CardImage5 from '../../assets/card-image-5.jpg';
+import CardImage1 from '../../assets/pink-moon.jpg';
+import CardImage2 from '../../assets/mojito.jpg';
+import CardImage3 from   '../../assets/pure-passion.jpg';
+import CardImage4 from  '../../assets/sweet-sangria.jpg';
+import CardImage5 from '../../assets/raspberry-julep.jpg';
+import CardImage6 from '../../assets/mint-julep.jpg'; 
+import CardImage7 from '../../assets/pina-colada.jpg'; 
+import CardImage8 from '../../assets/greyhound.jpg';
 
-const { Meta } = Card;
+
+const images = [
+  {
+    url: CardImage1,
+    name: 'Pink Moon',
+    id: '178354',
+  },
+  {
+    url: CardImage2,
+    name: 'Mojito',
+    id: '11000',
+  },
+  {
+    url: CardImage3,
+    name: 'Pure Passion',
+    id: '178338',
+  },
+  {
+    url: CardImage4,
+    name: 'Sweet Sangria',
+    id: '13024',
+  },
+  {
+    url: CardImage5,
+    name: 'Raspberry Julep',
+    id: '17207',
+  },
+  {
+    url: CardImage6,
+    name: 'Mint Julep',
+    id: '17206',
+  },
+  {
+    url: CardImage7,
+    name: 'Pina Colada',
+    id: '178333',
+  },
+  {
+    url: CardImage8,
+    name: 'Greyhound',
+    id: '17252',
+  },
+]
 
 const Recommendations = () => {
   const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 3000, min: 1300 },
-      items: 3
-    },
     desktop: {
-      breakpoint: { max: 1300, min: 952 },
+      breakpoint: { max: 3000, min: 900 },
       items: 3
     },
     tablet: {
-      breakpoint: { max: 952, min: 756 },
+      breakpoint: { max: 900, min: 656 },
       items: 2
     },
-    mobile: {
-      breakpoint: { max: 756, min: 537 },
+    smallTablet: {
+      breakpoint: { max: 656, min: 537 },
       items: 1.7
     },
-    mobile2: {
-      breakpoint: { max: 537, min: 0 },
+    largeMobile: {
+      breakpoint: { max: 537, min: 453 },
+      items: 1.5
+    },
+    mobile: {
+      breakpoint: { max: 453, min: 0 },
       items: 1
     }
   };
@@ -51,21 +97,13 @@ const Recommendations = () => {
             swipeable={true}
             keyBoardControl={true}
           >
-            <Card cover={<img alt="example" src={CardImage1.src} />}>
-              <Meta title="Mojito" />
-            </Card>
-            <Card cover={<img alt="example" src={CardImage3.src} />} >
-              <Meta title="Negroni" />
-            </Card>
-            <Card cover={<img alt="example" src={CardImage2.src} />} >
-              <Meta title="Margarita" />
-            </Card>
-            <Card cover={<img alt="example" src={CardImage4.src} />} >
-              <Meta title="Salty Dog" />
-            </Card>
-            <Card cover={<img alt="example" src={CardImage5.src} />} >
-              <Meta title="Vodka Lemon" />
-            </Card>
+            {images && images.map((image) => (
+              <Link className={styles.cocktailLink} key={image.id} href={'/'}>
+                <Image className={styles.cocktailImage} src={image.url} alt={`${image.name} image`} />
+                <span className={styles.cocktailTitle}>{image.name}</span>
+              </Link>
+            )
+            )}
           </Carousel>
         </div>
       </Container>

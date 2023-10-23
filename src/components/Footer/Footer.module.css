@@ -19,7 +19,6 @@
     padding: 20px 0 20px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
 }
 
 .footerNavigation {
@@ -34,7 +33,6 @@
 .logo {
     font-weight: 700;
     font-size: 26px;
-    /* color: #2e1c2f; */
     text-decoration: none;
 }
 
@@ -57,7 +55,6 @@
 .itemLink {
     text-decoration: none;
     font-size: 18px;
-    font-weight: 500;
     transition: 0.3s;
 }
 
@@ -67,7 +64,6 @@
 
 .footerBottom {
     text-align: center;
-    /* font-weight: 500; */
 }
 
 
