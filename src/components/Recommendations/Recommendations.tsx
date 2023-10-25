@@ -8,11 +8,11 @@ import 'react-multi-carousel/lib/styles.css';
 import CardImage1 from '../../assets/pink-moon.jpg';
 import CardImage2 from '../../assets/mojito.jpg';
 import CardImage3 from   '../../assets/pure-passion.jpg';
-import CardImage4 from  '../../assets/sweet-sangria.jpg';
+import CardImage4 from  '../../assets/mulled-wine.jpg';
 import CardImage5 from '../../assets/raspberry-julep.jpg';
-import CardImage6 from '../../assets/mint-julep.jpg'; 
+import CardImage6 from '../../assets/winter-rita.jpg'; 
 import CardImage7 from '../../assets/pina-colada.jpg'; 
-import CardImage8 from '../../assets/greyhound.jpg';
+import CardImage8 from '../../assets/gin-and-tonic.jpg';
 
 
 const images = [
@@ -33,28 +33,28 @@ const images = [
   },
   {
     url: CardImage4,
-    name: 'Sweet Sangria',
-    id: '13024',
+    name: 'Mulled wine',
+    id: '12988',
   },
   {
     url: CardImage5,
     name: 'Raspberry Julep',
-    id: '17207',
+    id: '178333',
   },
   {
     url: CardImage6,
-    name: 'Mint Julep',
-    id: '17206',
+    name: 'Winter Rita',
+    id: '178347',
   },
   {
     url: CardImage7,
     name: 'Pina Colada',
-    id: '178333',
+    id: '17207',
   },
   {
     url: CardImage8,
-    name: 'Greyhound',
-    id: '17252',
+    name: 'Gin And Tonic',
+    id: '11403',
   },
 ]
 
@@ -98,7 +98,7 @@ const Recommendations = () => {
             keyBoardControl={true}
           >
             {images && images.map((image) => (
-              <Link className={styles.cocktailLink} key={image.id} href={'/'}>
+              <Link className={styles.cocktailLink} key={image.id} href={`/cocktail/${image.id}`}>
                 <Image className={styles.cocktailImage} src={image.url} alt={`${image.name} image`} />
                 <span className={styles.cocktailTitle}>{image.name}</span>
               </Link>

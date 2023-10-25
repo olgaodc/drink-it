@@ -31,10 +31,6 @@ const CocktailsPage = () => {
     fetchCocktails();
   }, []);
 
-  const removeAllCocktails = () => {
-    setCocktails([]);
-  }
-
   const fetchCocktailById = async (id: string) => {
     const cocktail = cocktails?.find(cocktail => cocktail.idDrink === id);
 
@@ -50,6 +46,7 @@ const CocktailsPage = () => {
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputText}`);
     const data = await response.json();
     setDisplayedCocktails(data.drinks)
+    console.log(data.drinks)
   }
 
   return (
@@ -94,8 +91,6 @@ const CocktailsPage = () => {
             </button>
           </div>
 
-
-
           <div className={styles.cocktailsSection}>
             {displayedCocktails && displayedCocktails.map((cocktail) => (
               <CocktailCard
@@ -107,8 +102,6 @@ const CocktailsPage = () => {
                 onClickCocktail={() => fetchCocktailById(cocktail.idDrink)}
               />
             ))}
-          </div>
-          <div className={styles.removeAllButtonWrapper}>
           </div>
         </Container>
 
