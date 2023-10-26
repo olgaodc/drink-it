@@ -1,0 +1,31 @@
+.cocktailLink {
+    text-decoration: none;
+    flex: 0 1 calc(50% - 1em);
+}
+
+.cocktailCard {
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.cocktailLink .cocktailCard .cocktailImage {
+    width: 100%;
+    border-radius: 0;
+    transform: scale(1);
+	transition: .3s ease-in-out;
+}
+
+.cocktailLink:hover .cocktailCard .cocktailImage {
+	transform: scale(1.15);
+}
+
+.cocktailLink .cocktailCard .ant-card-body {
+    padding: 0;
+}
+
+@media (max-width: 587px) {
+    .cocktailCard {
+        max-width: 340px;
+    }
+}

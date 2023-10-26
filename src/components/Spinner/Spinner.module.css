@@ -1,0 +1,20 @@
+.spinnerWrapper {
+    min-height: calc(100vh - 183px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.spinner {
+    border: 10px solid #e1e1e1; /* Light grey */
+    border-top: 10px solid #e8b20e; /* Blue */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

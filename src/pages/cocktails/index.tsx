@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import CocktailCard from '../../components/CocktailCard/CocktailCard';
 import Navbar from '../../components/Navbar/Navbar';
 import styles from './cocktailsPage.module.css';
 import Container from "@/components/Container/Container";
+import axios from "axios";
+import SmallCard from "@/components/SmallCard/SmallCard";
+import Footer from "@/components/Footer/Footer";
 
 type CocktailProps = {
   idDrink: string,
   strDrink: string,
   strDrinkThumb: string;
-  strInstructions: string,
   strAlcoholic: string;
 };
 
@@ -20,27 +21,21 @@ const CocktailsPage = () => {
   const [inputText, setInputText] = useState('');
 
   const fetchCocktails = async () => {
-    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
-    const data = await response.json();
-    setCocktails(data.drinks);
-    console.log(data.drinks);
-    setDisplayedCocktails(data.drinks);
+    try {
+      const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=ice');
+
+      const { drinks } = response.data;
+
+      setCocktails(drinks);
+      setDisplayedCocktails(drinks);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   useEffect(() => {
     fetchCocktails();
   }, []);
-
-  const fetchCocktailById = async (id: string) => {
-    const cocktail = cocktails?.find(cocktail => cocktail.idDrink === id);
-
-    if (cocktail) {
-      const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-      const data = await response.json();
-
-      console.log('Cocktail info: ', data.drinks[0]);
-    }
-  }
 
   const fetchCocktailsByFirstLetter = async (inputText: string) => {
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputText}`);
@@ -52,10 +47,10 @@ const CocktailsPage = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.cocktailsSectionWrapper}>
+      <div className={styles.content}>
         <Container>
           <div className={styles.buttonsWrapper}>
-            <button
+            {/* <button
               onClick={() => setDisplayedCocktails(() => cocktails?.filter((cocktail) => cocktail.strAlcoholic === 'Alcoholic'))}
             >
               Alcoholic
@@ -71,7 +66,7 @@ const CocktailsPage = () => {
               onClick={() => setDisplayedCocktails(cocktails)}
             >
               All Cocktails
-            </button>
+            </button> */}
 
             <input
               className={styles.findCocktailInput}
@@ -90,22 +85,21 @@ const CocktailsPage = () => {
               Find
             </button>
           </div>
-
-          <div className={styles.cocktailsSection}>
-            {displayedCocktails && displayedCocktails.map((cocktail) => (
-              <CocktailCard
-                key={cocktail.idDrink}
-                id={cocktail.idDrink}
-                name={cocktail.strDrink}
-                photoUrl={cocktail.strDrinkThumb}
-                isAlcoholic={cocktail.strAlcoholic === 'Alcoholic'}
-                onClickCocktail={() => fetchCocktailById(cocktail.idDrink)}
-              />
-            ))}
+          <div className={styles.cocktailsSectionWrapper}>
+            <div className={styles.cocktailsSection}>
+              {displayedCocktails && displayedCocktails.map((cocktail) => (
+                <SmallCard
+                  key={cocktail.idDrink}
+                  id={cocktail.idDrink}
+                  name={cocktail.strDrink}
+                  photoUrl={cocktail.strDrinkThumb}
+                />
+              ))}
+            </div>
           </div>
         </Container>
-
       </div>
+      <Footer />
     </>
   );
 }

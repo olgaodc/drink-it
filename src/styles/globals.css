@@ -17,3 +17,18 @@ a {
 .ant-carousel .slick-slider .slick-list {
     border-radius: 15px;
 }
+
+.ant-card .ant-card-body {
+    padding: 10px 0;
+    
+}
+
+.ant-card-meta .ant-card-meta-detail .ant-card-meta-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    color: #be2a77;
+}
+
+div.ant-card-cover {
+    overflow: hidden;
+}

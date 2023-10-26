@@ -98,8 +98,16 @@ const Recommendations = () => {
             keyBoardControl={true}
           >
             {images && images.map((image) => (
-              <Link className={styles.cocktailLink} key={image.id} href={`/cocktail/${image.id}`}>
-                <Image className={styles.cocktailImage} src={image.url} alt={`${image.name} image`} />
+              <Link 
+                className={styles.cocktailLink} 
+                key={image.id} 
+                href={`/cocktail/${image.id}`}
+              >
+                <Image 
+                  className={styles.cocktailImage} 
+                  src={image.url} 
+                  alt={`${image.name} image`} 
+                />
                 <span className={styles.cocktailTitle}>{image.name}</span>
               </Link>
             )

@@ -1,17 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import Link from 'next/link';
 import styles from './cocktailPage.module.css';
 import Container from '@/components/Container/Container';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import LargeCard from '@/components/LargeCard/LargeCard';
+import SmallCard from '@/components/SmallCard/SmallCard';
+import Spinner from '@/components/Spinner/Spinner';
 
-import { Card } from 'antd';
-
-
-const { Meta } = Card;
 
 type CocktailProps = {
   strDrink: string,
@@ -26,12 +23,13 @@ type CocktailProps = {
 const CocktailPage: FC<CocktailProps> = () => {
   const [cocktail, setCocktail] = useState<CocktailProps>();
   const [similarCocktails, setSimilarCocktails] = useState<CocktailProps[]>([]);
+  const [isLoaded, setLoaded] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     router.query.id && getCocktailWithSuggestions();
   }, [router.query.id]);
-  
+
   const getCocktail = async () => {
     try {
       const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${router.query.id}`);
@@ -41,7 +39,7 @@ const CocktailPage: FC<CocktailProps> = () => {
 
       setCocktail(drink);
       return drink;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }
@@ -77,13 +75,27 @@ const CocktailPage: FC<CocktailProps> = () => {
 
         const filteredSimilarDrinks = drinks && drinks.filter((drink: { idDrink: string; }) => drink.idDrink !== drinkId).slice(0, 4);
 
-        //TO DO: 
-        //if (filteredSimilarDrinks.length === 0) {
-        //  fetch random drink
-        //}
+        if (filteredSimilarDrinks.length === 0) {
+          getRandomCocktail()
+        } else {
+          setSimilarCocktails(filteredSimilarDrinks);
+        }
 
-        setSimilarCocktails(filteredSimilarDrinks);
+        setLoaded(true);
       }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const getRandomCocktail = async () => {
+    try {
+      const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
+
+      const { drinks } = response.data;
+
+      setSimilarCocktails(drinks);
+
     } catch (err) {
       console.log(err);
     }
@@ -119,53 +131,43 @@ const CocktailPage: FC<CocktailProps> = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.contentWrapper}>
-        <Container>
-          <div className={styles.cocktailSection}>
-            {cocktail && (
-              <LargeCard
-                name={cocktail.strDrink}
-                photoUrl={cocktail.strDrinkThumb}
-                isAlcoholic={cocktail.strAlcoholic}
-                instruction={cocktail.strInstructions}
-                ingredients={ingredients}
-              />
-            )}  
-          </div>
-          <div className={styles.suggestionsSectionWrapper}>
-            <h2 className={styles.suggestionsTitle}>You might also like</h2>
-            <div className={styles.suggestionsSection}>
-              {similarCocktails && similarCocktails.map((cocktail: CocktailProps) => (
-                <Link 
-                  className={styles.suggestionLink}
-                  key={cocktail.idDrink}
-                  href={`/cocktail/${cocktail.idDrink}`}
-                  onClick={() => handleClick(cocktail)}
-                >
-                  <Card 
-                    className={styles.suggestionCard}
-                    key={cocktail.idDrink}
-                    hoverable={true} 
-                    cover={
-                      <img 
-                        className={styles.suggestionImage}
-                        alt={`${cocktail.strDrink} cocktail`}
-                        src={cocktail.strDrinkThumb} 
-                      />
-                    }
-                  >
-                    <Meta 
-                      className={styles.suggestionTitle} 
-                      title={cocktail.strDrink} 
-                    />
-                  </Card>
-                </Link>
-              ))
-              }
+      {isLoaded ? (
+        <div className={styles.contentWrapper}>
+          <Container>
+            <div className={styles.cocktailSection}>
+              {cocktail && (
+                <LargeCard
+                  name={cocktail.strDrink}
+                  photoUrl={cocktail.strDrinkThumb}
+                  isAlcoholic={cocktail.strAlcoholic}
+                  instruction={cocktail.strInstructions}
+                  ingredients={ingredients}
+                />
+              )}
             </div>
+          </Container>
+
+          <div className={styles.suggestionsSectionWrapper}>
+            <Container>
+              <h2 className={styles.suggestionsTitle}>You might also like</h2>
+              <div className={styles.suggestionsSection}>
+                {similarCocktails && similarCocktails.map((cocktail: CocktailProps) => (
+                  <SmallCard
+                    key={cocktail.idDrink}
+                    id={cocktail.idDrink}
+                    name={cocktail.strDrink}
+                    photoUrl={cocktail.strDrinkThumb}
+                    onClickCocktail={() => handleClick(cocktail)}
+                  />
+                ))
+                }
+              </div>
+            </Container>
           </div>
-        </Container>
-      </div>
+        </div>
+      ) : <Spinner />
+      }
+
       <Footer />
     </>
   )
