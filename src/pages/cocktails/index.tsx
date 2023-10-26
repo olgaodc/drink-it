@@ -17,32 +17,32 @@ type CocktailsProps = Array<CocktailProps> | null;
 
 const CocktailsPage = () => {
   const [cocktails, setCocktails] = useState<CocktailsProps>();
-  const [displayedCocktails, setDisplayedCocktails] = useState<CocktailsProps>();
+  // const [displayedCocktails, setDisplayedCocktails] = useState<CocktailsProps>();
   const [inputText, setInputText] = useState('');
 
-  const fetchCocktails = async () => {
+  const fetchCocktailsByIngredient = async (inputText: string) => {
     try {
-      const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=ice');
+      const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${inputText}`);
 
       const { drinks } = response.data;
 
       setCocktails(drinks);
-      setDisplayedCocktails(drinks);
+      // setDisplayedCocktails(drinks);
     } catch (err) {
       console.log(err)
     }
   };
 
   useEffect(() => {
-    fetchCocktails();
+    fetchCocktailsByIngredient('ice');
   }, []);
 
-  const fetchCocktailsByFirstLetter = async (inputText: string) => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputText}`);
-    const data = await response.json();
-    setDisplayedCocktails(data.drinks)
-    console.log(data.drinks)
-  }
+  // const fetchCocktailsByFirstLetter = async (inputText: string) => {
+  //   const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputText}`);
+  //   const data = await response.json();
+  //   setDisplayedCocktails(data.drinks)
+  //   console.log(data.drinks)
+  // }
 
   return (
     <>
@@ -72,13 +72,13 @@ const CocktailsPage = () => {
               className={styles.findCocktailInput}
               onChange={(event) => setInputText(event.target.value)}
               value={inputText}
-              placeholder="Find cocktails by first letter"
+              placeholder="E.g Gin"
             />
 
             <button
               className={styles.findCocktailButton}
               onClick={() => {
-                fetchCocktailsByFirstLetter(inputText);
+                fetchCocktailsByIngredient(inputText);
                 setInputText('');
               }}
             >
@@ -87,7 +87,7 @@ const CocktailsPage = () => {
           </div>
           <div className={styles.cocktailsSectionWrapper}>
             <div className={styles.cocktailsSection}>
-              {displayedCocktails && displayedCocktails.map((cocktail) => (
+              {cocktails && cocktails.map((cocktail) => (
                 <SmallCard
                   key={cocktail.idDrink}
                   id={cocktail.idDrink}
