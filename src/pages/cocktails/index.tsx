@@ -111,28 +111,27 @@ const CocktailsPage = () => {
         <Navbar />
       </div>
       <Container>
-        <div className={styles.buttonsWrapper}>
+        <div className={styles.searchBar}>
           <div className={styles.searchTitle}>Search by</div>
           <Select
             className={styles.cocktailSelect}
-            defaultValue="Ingredient"
+            autoFocus={false} 
+            defaultValue='Ingredient'
             onChange={onSearchOptionChange}
             options={[
               { value: 'ingredient', label: 'Ingredient' },
               { value: 'name', label: 'Cocktail name' },
-              { value: 'first-letter', label: 'Cocktail first letter' },
-              // { value: 'disabled', label: 'Disabled', disabled: true },
+              { value: 'first-letter', label: 'Cocktail first letter' }
             ]}
           />
-
           <Input
             className={styles.cocktailInput}
             onChange={(event) => setInputText(event.target.value)}
             value={inputText}
+            autoFocus={false}
             placeholder={getInputPlaceholder()}
             maxLength={getInputMaxLength()}
           />
-
           <PrimaryButton
             // className={styles.findCocktailButton}
             onClick={onSearch}
