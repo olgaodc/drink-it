@@ -55,7 +55,7 @@
 
 
 @media (max-width: 587px) {
-    .buttonsWrapper {
+    .searchBar {
         flex-direction: column;
     }
 
