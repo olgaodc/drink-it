@@ -20,8 +20,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    background-color: rgb(244, 193, 202);
-    /* background-color: #D481A3; */
+    background-color: #e3b6be;
     padding: 20px;
     border-radius: 30px;
     max-width: 800px;
@@ -37,7 +36,7 @@
 }
 
 .cocktailsSectionWrapper {
-    margin: 100px 0 160px;
+    margin: 70px 0 100px;
 }
 
 .cocktailsSection {
@@ -48,6 +47,11 @@
     gap: 25px;
 }
 
+.empty {
+    margin: 50px 0;
+    font-size: 20px;
+}
+
 .paginationWrapper {
     display: flex;
     justify-content: center;
@@ -56,7 +60,12 @@
 
 @media (max-width: 587px) {
     .searchBar {
+        margin-top: -104px;
         flex-direction: column;
+    }
+
+    .searchTitle {
+        font-size: 24px;
     }
 
     .cocktailSelect {

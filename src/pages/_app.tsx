@@ -8,11 +8,16 @@ export default function App({ Component, pageProps }: AppProps) {
       theme={{
         token: {
           colorPrimary: '#E8B20E',
+          colorText: '#2e1c2f',
+          fontFamily: 'Roboto Condensed, sans-serif',
+          fontSize: 16,
           borderRadius: 8,
-
-          // Alias Token
-          // colorBgContainer: '#f6ffed',
         },
+        components: {
+          Pagination: {
+            itemActiveBg: '#e3b6be',
+          },
+        }
       }}
     >
       <Component {...pageProps} />

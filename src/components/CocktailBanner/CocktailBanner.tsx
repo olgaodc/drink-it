@@ -6,7 +6,7 @@ import BottlesImage from '../../assets/cocktail-jars.jpg';
 import BarImage from '../../assets/cocktail-bar.jpg';
 import CitrusImage from '../../assets/cocktail-citrus.jpg';
 import CubesImage from '../../assets/cocktail-cubes2.jpg';
-import Button from '../Button/Button';
+import Button from '../PrimaryButton/PrimaryButton';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const CocktailBanner = () => {

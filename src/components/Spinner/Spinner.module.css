@@ -1,13 +1,13 @@
 .spinnerWrapper {
-    min-height: calc(100vh - 183px);
+    min-height: calc(100vh - 234px);
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 .spinner {
-    border: 10px solid #e1e1e1; /* Light grey */
-    border-top: 10px solid #e8b20e; /* Blue */
+    border: 10px solid #e1e1e1;
+    border-top: 10px solid #e8b20e;
     border-radius: 50%;
     width: 80px;
     height: 80px;

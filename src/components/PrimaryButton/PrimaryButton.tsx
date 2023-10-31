@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import styles from './Button.module.css';
+import styles from './PrimaryButton.module.css';
 
 interface Props {
     htmlType?: string;

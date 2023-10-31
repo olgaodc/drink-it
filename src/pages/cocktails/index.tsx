@@ -5,8 +5,10 @@ import Container from "@/components/Container/Container";
 import axios from "axios";
 import SmallCard from "@/components/SmallCard/SmallCard";
 import Footer from "@/components/Footer/Footer";
-import { Input, Pagination, Select } from "antd";
-import PrimaryButton from "@/components/Button/Button";
+import { Empty, Input, Pagination, Select } from "antd";
+import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
+import NotFoundImage from '../../assets/not-found.png';
+import Spinner from "@/components/Spinner/Spinner";
 
 type CocktailProps = {
   idDrink: string,
@@ -19,9 +21,9 @@ type CocktailsProps = Array<CocktailProps> | null;
 
 const CocktailsPage = () => {
   const [cocktails, setCocktails] = useState<CocktailsProps>();
-  // const [displayedCocktails, setDisplayedCocktails] = useState<CocktailsProps>();
   const [inputText, setInputText] = useState('');
-  const [searchOption, setSearchOption] = useState('ingredient'); 
+  const [searchOption, setSearchOption] = useState('ingredient');
+  const [isLoaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
   const pageSize = 20;
 
@@ -37,6 +39,8 @@ const CocktailsPage = () => {
       const { drinks } = response.data;
 
       setCocktails(drinks);
+      setLoaded(true);
+      setPage(1);
     } catch (err) {
       console.log(err)
     }
@@ -50,6 +54,7 @@ const CocktailsPage = () => {
       const { drinks } = response.data;
 
       setCocktails(drinks);
+      setPage(1);
     } catch (err) {
       console.log(err)
     }
@@ -63,6 +68,7 @@ const CocktailsPage = () => {
       const { drinks } = response.data;
 
       setCocktails(drinks);
+      setPage(1);
 
     } catch (err) {
       console.log(err);
@@ -73,32 +79,29 @@ const CocktailsPage = () => {
     setSearchOption(value);
   };
 
-    const getInputPlaceholder = () => {
-      if (searchOption === 'ingredient') {
-        return 'e.g gin';
-      } else if (searchOption === 'first-letter') {
-        return 'e.g a';
-      } else if (searchOption === 'name') {
-        return 'e.g Margarita';
-      }
-      return '';
-    };
-  
-    const getInputMaxLength = () => {
-      return searchOption === 'first-letter' ? 1 : 15;
-    };
+  const getInputPlaceholder = () => {
+    if (searchOption === 'ingredient') {
+      return 'e.g gin';
+    } else if (searchOption === 'first-letter') {
+      return 'e.g a';
+    } else if (searchOption === 'name') {
+      return 'e.g Margarita';
+    }
+    return '';
+  };
+
+  const getInputMaxLength = () => {
+    return searchOption === 'first-letter' ? 1 : 20;
+  };
 
   const onSearch = () => {
     if (searchOption === 'ingredient') {
       fetchCocktailsByIngredient(inputText);
-      setInputText('');
     } else if (searchOption === 'name') {
       fetchCocktailsByName(inputText);
-      setInputText('');
     } else if (searchOption === 'first-letter') {
       fetchCocktailsByFirstLetter(inputText);
-      setInputText('');
-    } 
+    }
   };
 
   const onPageChange = (currentPage: number) => {
@@ -107,67 +110,81 @@ const CocktailsPage = () => {
 
   return (
     <>
-      <div className={styles.bgImage} >
-        <Navbar />
-      </div>
-      <Container>
-        <div className={styles.searchBar}>
-          <div className={styles.searchTitle}>Search by</div>
-          <Select
-            className={styles.cocktailSelect}
-            autoFocus={false} 
-            defaultValue='Ingredient'
-            onChange={onSearchOptionChange}
-            options={[
-              { value: 'ingredient', label: 'Ingredient' },
-              { value: 'name', label: 'Cocktail name' },
-              { value: 'first-letter', label: 'Cocktail first letter' }
-            ]}
-          />
-          <Input
-            className={styles.cocktailInput}
-            onChange={(event) => setInputText(event.target.value)}
-            value={inputText}
-            autoFocus={false}
-            placeholder={getInputPlaceholder()}
-            maxLength={getInputMaxLength()}
-          />
-          <PrimaryButton
-            // className={styles.findCocktailButton}
-            onClick={onSearch}
-          >
-            Search
-          </PrimaryButton>
-        </div>
-      </Container>
-
-      <div className={styles.content}>
-        <Container>
-          <div className={styles.cocktailsSectionWrapper}>
-            <div className={styles.cocktailsSection}>
-              {cocktails && cocktails.slice((page - 1) * pageSize, page * pageSize).map((cocktail) => (
-                <SmallCard
-                  key={cocktail.idDrink}
-                  id={cocktail.idDrink}
-                  name={cocktail.strDrink}
-                  photoUrl={cocktail.strDrinkThumb}
-                />
-              ))}
-            </div>
-            <div className={styles.paginationWrapper}>
-              <Pagination
-                className={styles.pagination}
-                current={page}
-                pageSize={pageSize}
-                total={cocktails?.length}
-                onChange={onPageChange}
-                showSizeChanger={false}
-              />
-            </div>
+      {isLoaded ? (
+        <div className={styles.pageWrapper}>
+          <div className={styles.bgImage} >
+            <Navbar />
           </div>
-        </Container>
-      </div>
-      <Footer />
+          <Container>
+            <div className={styles.searchBar}>
+              <div className={styles.searchTitle}>Search by</div>
+              <Select
+                className={styles.cocktailSelect}
+                autoFocus={false}
+                defaultValue='Ingredient'
+                onChange={onSearchOptionChange}
+                options={[
+                  { value: 'ingredient', label: 'Ingredient' },
+                  { value: 'name', label: 'Cocktail name' },
+                  { value: 'first-letter', label: 'Cocktail first letter' }
+                ]}
+              />
+              <Input
+                className={styles.cocktailInput}
+                onChange={(event) => setInputText(event.target.value)}
+                value={inputText}
+                autoFocus={false}
+                placeholder={getInputPlaceholder()}
+                maxLength={getInputMaxLength()}
+              />
+              <PrimaryButton
+                onClick={onSearch}
+              >
+                Search
+              </PrimaryButton>
+            </div>
+          </Container>
+
+          <Container>
+            {cocktails ? (
+              <div className={styles.cocktailsSectionWrapper}>
+                <div className={styles.cocktailsSection}>
+                  {cocktails.slice((page - 1) * pageSize, page * pageSize).map((cocktail) => (
+                    <SmallCard
+                      key={cocktail.idDrink}
+                      id={cocktail.idDrink}
+                      name={cocktail.strDrink}
+                      photoUrl={cocktail.strDrinkThumb}
+                    />
+                  ))}
+                </div>
+                <div className={styles.paginationWrapper}>
+                  <Pagination
+                    className={styles.pagination}
+                    current={page}
+                    pageSize={pageSize}
+                    total={cocktails?.length}
+                    onChange={onPageChange}
+                    showSizeChanger={false}
+                  />
+                </div>
+              </div>
+            ) : (
+              <Empty
+                className={styles.empty}
+                image='https://cozeller.com/_next/static/images/empty-ada0529a785642ba070674a6d0052c27.png'
+                imageStyle={{ height: 250 }}
+                description={
+                  <span>Cocktails not found</span>
+                }
+              />
+            )}
+          </Container>
+
+          <Footer />
+        </div>
+      ) : (<Spinner />)}
+
     </>
   );
 }

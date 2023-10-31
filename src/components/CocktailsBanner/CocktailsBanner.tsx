@@ -3,7 +3,7 @@ import styles from './CocktailsBanner.module.css';
 import Container from '../Container/Container';
 import BartenderImage from '../../assets/bartender.png';
 import BlobImage from '../../assets/blob.svg';
-import Button from '../Button/Button';
+import Button from '../PrimaryButton/PrimaryButton';
 import { useRouter } from 'next/router';
 
 const CocktailsBanner = () => {

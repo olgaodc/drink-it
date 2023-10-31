@@ -1,86 +1,115 @@
-
 .cocktailCard {
-    /* background-color: rgb(30, 29, 29); */
-    /* color: rgb(219, 218, 218); */
     max-width: 900px;
     display: flex;
-    /* gap: 50px; */
+    align-items: flex-start;
+    gap: 60px;
 }
 
 .cocktailImage {
+    height: 430px;
     width: 380px;
-    /* height: 450px; */
-    /* object-fit: cover; */
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 8px 8px 12px 1px rgba(0,0,0,0.3);
 }
 
 .cocktailInfo {
-    padding: 30px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    /* background-color: #bdd2c6bd; */
+    gap: 30px;
+    width: calc(100% - 440px);
 }
 
 .cocktailNameWrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
 }
 
 .cocktailName {
-    color: #be2a77;
+    color: #3b3636;
+    font-size: 42px;
+    font-weight: 500;
     margin: 0;
 }
 
 .cocktailType {
-    font-weight: 600;
+    padding: 5px 10px;
+    background-color: #E8B20E;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.cocktailGlassWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.glassImage {
+    width: 30px;
+}
+
+.cocktailGlass {
+    font-size: 18px;
 }
 
 .ingredientsTitle {
-    font-size: 18px;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 6px;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 10px;
 }
 
 .ingredientsList {
     margin: 0;
-    padding-left: 15px;
+    padding: 0;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 4px;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 20px;
 }
 
 .listItem {
     list-style-type: none;
+    font-size: 18px;
 }
 
 .cocktailInstruction {
     margin: 0;
     line-height: 130%;
+    font-size: 18px;
 }
 
 .instructionTitle {
-    /* font-size: 18px; */
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 10px;
 }
 
-/* @media (max-width: 992px) {
+@media (max-width: 992px) {
     .cocktailCard {
-        width: 100%;
+        gap: 40px;
     }
-} */
+}
 
 @media (max-width: 768px) {
     .cocktailCard {
         align-items: center;
         flex-direction: column;
     }
+
+    .cocktailInfo {
+        padding-top: 0;
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
-    .container {
-        padding: 20px;
+    .cocktailImage {
+        height: 380px;
+        width: 340px;
     }
+    
 }

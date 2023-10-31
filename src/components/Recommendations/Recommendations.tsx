@@ -17,9 +17,9 @@ import CardImage8 from '../../assets/gin-and-tonic.jpg';
 
 const images = [
   {
-    url: CardImage1,
-    name: 'Pink Moon',
-    id: '178354',
+    url: CardImage3,
+    name: 'Pure Passion',
+    id: '178338',
   },
   {
     url: CardImage2,
@@ -27,9 +27,14 @@ const images = [
     id: '11000',
   },
   {
-    url: CardImage3,
-    name: 'Pure Passion',
-    id: '178338',
+    url: CardImage8,
+    name: 'Gin And Tonic',
+    id: '11403',
+  },
+  {
+    url: CardImage1,
+    name: 'Pink Moon',
+    id: '178354',
   },
   {
     url: CardImage4,
@@ -51,11 +56,7 @@ const images = [
     name: 'Pina Colada',
     id: '17207',
   },
-  {
-    url: CardImage8,
-    name: 'Gin And Tonic',
-    id: '11403',
-  },
+
 ]
 
 const Recommendations = () => {

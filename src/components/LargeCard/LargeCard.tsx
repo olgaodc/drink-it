@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styles from './LargeCard.module.css';
+import GlassImage from '../../assets/cocktail-glass.png';
 
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   ingredients: string[],
   instruction: string,
   isAlcoholic: string,
+  glass: string,
 
 }
 
@@ -17,18 +19,23 @@ const LargeCard: FC<Props> = ({
   isAlcoholic,
   ingredients,
   instruction,
+  glass,
 }) => {
   return (
     <div className={styles.cocktailCard}>
       <img className={styles.cocktailImage} src={photoUrl} />
       <div className={styles.cocktailInfo}>
         <div className={styles.cocktailNameWrapper}>
-          <h2 className={styles.cocktailName}>{name}</h2>
           <span className={styles.cocktailType}>{isAlcoholic}</span>
+          <h2 className={styles.cocktailName}>{name}</h2>
+        </div>
+        <div className={styles.cocktailGlassWrapper}>
+          <img className={styles.glassImage} src={GlassImage.src} alt="glass image" />
+          <span className={styles.cocktailGlass}>{glass}</span>
         </div>
 
         <div className={styles.ingredientsListWrapper}>
-          <span className={styles.ingredientsTitle}>Ingredients</span>
+          <h3 className={styles.ingredientsTitle}>Ingredients</h3>
           <ul className={styles.ingredientsList}>
             {ingredients.map((ingredient, index) => (
               <li className={styles.listItem} key={index} >{ingredient}</li>
@@ -36,10 +43,10 @@ const LargeCard: FC<Props> = ({
             }
           </ul>
         </div>
-        <p className={styles.cocktailInstruction}>
-          <span className={styles.instructionTitle}>Recipe </span>
-          {instruction}
-        </p>
+        <div className={styles.instructionWrapper}>
+          <h3 className={styles.instructionTitle}>Recipe</h3>
+          <p className={styles.cocktailInstruction}>{instruction}</p>
+        </div>
       </div>
     </div>
   )

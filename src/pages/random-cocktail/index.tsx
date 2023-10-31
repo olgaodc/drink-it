@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Container from "@/components/Container/Container";
 import LargeCard from "@/components/LargeCard/LargeCard";
 import Footer from "@/components/Footer/Footer";
-import PrimaryButton from "@/components/Button/Button";
+import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import Spinner from "@/components/Spinner/Spinner";
 
 
@@ -15,6 +15,7 @@ type CocktailProps = {
   strInstructions: string,
   strAlcoholic: string;
   [key: string]: string | undefined;
+  strGlass: string;
 };
 
 const RandomCocktailPage = () => {
@@ -72,6 +73,7 @@ const RandomCocktailPage = () => {
                   isAlcoholic={cocktail.strAlcoholic}
                   instruction={cocktail.strInstructions}
                   ingredients={ingredients}
+                  glass={cocktail.strGlass}
                 />
               )}
               <PrimaryButton onClick={getRandomCocktail}>Another cocktail</PrimaryButton>
@@ -86,17 +88,3 @@ const RandomCocktailPage = () => {
 }
 
 export default RandomCocktailPage;
-
-// export async function getServerSideProps() {
-//   try {
-//     const response = await axios.get('https://thecocktaildb.com/api/json/v1/1/random.php');
-//     console.log(response);
-//     const { drinks } = response.data;
-//     const drink = drinks[0];
-//     console.log(drink);
-
-//     return { props: { drink: drink } };
-//   } catch (err) {
-//     return { props: { drink: null } };
-//   }
-// }

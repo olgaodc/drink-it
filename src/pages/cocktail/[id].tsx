@@ -18,6 +18,7 @@ type CocktailProps = {
   [key: string]: string | undefined;
   strIngredient1: string;
   idDrink: string;
+  strGlass: string;
 };
 
 const CocktailPage: FC<CocktailProps> = () => {
@@ -37,31 +38,14 @@ const CocktailPage: FC<CocktailProps> = () => {
       const { drinks } = response.data;
       const drink = drinks[0];
 
+      console.log(drink);
+
       setCocktail(drink);
       return drink;
     } catch (err) {
       console.log(err);
     }
   }
-
-  // const ingredients: string[] = [];
-
-  // for (let i = 1; i <= 15; i++) {
-  //   const ingredientKey = `strIngredient${i}`;
-  //   const measureKey = `strMeasure${i}`;
-
-  //   if (cocktail[ingredientKey]) {
-  //     const ingredient = cocktail[ingredientKey];
-  //     let measure = cocktail[measureKey] || '';
-  //     if (measure === 'null') {
-  //       measure = '';
-  //     }
-  //     const fullIngredient = measure ? `${measure} of ${ingredient}` : ingredient;
-  //     if (typeof fullIngredient === 'string') {
-  //       ingredients.push(fullIngredient);
-  //     }
-  //   }
-  // }
 
   const getSimilarCocktails = async () => {
     try {
@@ -142,6 +126,7 @@ const CocktailPage: FC<CocktailProps> = () => {
                   isAlcoholic={cocktail.strAlcoholic}
                   instruction={cocktail.strInstructions}
                   ingredients={ingredients}
+                  glass={cocktail.strGlass}
                 />
               )}
             </div>
