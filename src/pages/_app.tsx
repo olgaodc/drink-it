@@ -12,11 +12,16 @@ export default function App({ Component, pageProps }: AppProps) {
           fontFamily: 'Roboto Condensed, sans-serif',
           fontSize: 16,
           borderRadius: 8,
+          boxShadowSecondary: 'none',
         },
         components: {
           Pagination: {
             itemActiveBg: '#e3b6be',
           },
+          Select: {
+            optionSelectedBg: 'rgba(0, 0, 0, 0.04)',
+            optionSelectedFontWeight: 400,
+          }
         }
       }}
     >

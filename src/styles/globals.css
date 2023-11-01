@@ -39,13 +39,15 @@ input.ant-input {
     border: none;
 }
 
-.ant-select.ant-select-focused.ant-select-single.ant-select-open .ant-select-selector:focus,
-.ant-select.ant-select-focused.ant-select-single.ant-select-open .ant-select-selector:focus-within,
-.ant-select.ant-select-focused.ant-select-single.ant-select-show-arrow .ant-select-selector:focus, 
 input.ant-input:focus, 
 input.ant-input:focus-within {
     border: none;
     box-shadow: none;
+}
+
+.ant-select.ant-select-focused .ant-select-selector {
+    box-shadow: none !important;
+    border-color: none !important;
 }
 
 .ant-pagination .ant-pagination-item.ant-pagination-item-active {

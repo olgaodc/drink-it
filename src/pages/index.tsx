@@ -1,6 +1,5 @@
 import styles from './styles.module.css';
 import Navbar from '@/components/Navbar/Navbar';
-// import Container from '@/components/Container/Container';
 import CocktailsBanner from '@/components/CocktailsBanner/CocktailsBanner';
 import CocktailBanner from '@/components/CocktailBanner/CocktailBanner';
 import Footer from '@/components/Footer/Footer';

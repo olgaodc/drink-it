@@ -12,23 +12,21 @@ const CocktailsBanner = () => {
   const handleClick = () => {
     router.push(`/cocktails`);
   }
-  
+
   return (
-    <div className={styles.bgColor}>
-      <Container>
-        <div className={styles.bannerWrapper}>
-          <div className={styles.banner}>
-            <img className={styles.image} src={BartenderImage.src} />
-            <div className={styles.bannerInfo}>
-              <h1 className={styles.subtitle}>Don't know cocktail name?</h1>
-              <h2 className={styles.title}>Search by ingredient</h2>
-              <Button onClick={handleClick}>Try It</Button>
-              <img className={styles.blurImage} src={BlobImage.src} alt="" />
-            </div>
+    <Container>
+      <div className={styles.bannerWrapper}>
+        <div className={styles.banner}>
+          <img className={styles.image} src={BartenderImage.src} />
+          <div className={styles.bannerInfo}>
+            <h1 className={styles.subtitle}>Don't know cocktail name?</h1>
+            <h2 className={styles.title}>Search by ingredient</h2>
+            <Button onClick={handleClick}>Try It</Button>
+            <img className={styles.blurImage} src={BlobImage.src} alt="" />
           </div>
         </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   )
 }
 

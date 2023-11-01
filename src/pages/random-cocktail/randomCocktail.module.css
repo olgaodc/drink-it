@@ -17,4 +17,8 @@
     .cocktailSection {
         margin-top: 40px;
     }
+
+    .cocktailSection button {
+        margin-top: 50px;
+    }
 }

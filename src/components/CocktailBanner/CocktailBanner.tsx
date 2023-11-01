@@ -17,24 +17,22 @@ const CocktailBanner = () => {
   }
 
   return (
-    <div className={styles.bgColor}>
+    <div className={styles.bannerWrapper}>
       <Container>
         <div className={styles.banner}>
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 530: 2, 800: 3 }}
           >
             <Masonry columnsCount={3} gutter="15px">
-              <img className={styles.image} src={CitrusImage.src} />
+              <img className={styles.image} src={CitrusImage.src} alt="dried citrus slices" />
               <div className={styles.bannerInfo}>
                 <h1 className={styles.subtitle}>Try fortune and get</h1>
                 <h2 className={styles.title}>random cocktail</h2>
                 <Button onClick={handleClick}>Try It</Button>
               </div>
-              <img className={styles.image} src={BarImage.src} alt="" />
-              <img className={styles.image} src={BottlesImage.src} alt="" />
-              <img className={styles.image} src={CubesImage.src} alt="" />
-
-
+              <img className={styles.image} src={BarImage.src} alt="mobile cocktail bar truck" />
+              <img className={styles.image} src={BottlesImage.src} alt="three cocktail dispensers in the garden" />
+              <img className={styles.image} src={CubesImage.src} alt="fruit-infused ice cubes" />
             </Masonry>
           </ResponsiveMasonry>
         </div>

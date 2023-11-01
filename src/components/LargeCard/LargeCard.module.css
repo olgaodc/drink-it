@@ -103,6 +103,7 @@
     .cocktailInfo {
         padding-top: 0;
         width: 100%;
+        gap: 20px;
     }
 }
 
