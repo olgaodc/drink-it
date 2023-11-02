@@ -128,7 +128,7 @@ const CocktailsPage = () => {
           className={styles.pageWrapper}
           initial='hidden'
           whileInView='visible'
-          viewport={{ amount: 0.2, once: true }}
+          viewport={{ once: true }}
         >
           <motion.div 
             className={styles.bgImage} 
@@ -174,14 +174,17 @@ const CocktailsPage = () => {
           <Container>
             {cocktails ? (
               <div className={styles.cocktailsSectionWrapper}>
-                <div className={styles.cocktailsSection}>
+                <div 
+                  className={styles.cocktailsSection}
+
+                >
                   {cocktails.slice((page - 1) * pageSize, page * pageSize).map((cocktail, index) => (
                     <MSmallCard
                       key={cocktail.idDrink}
                       id={cocktail.idDrink}
                       name={cocktail.strDrink}
                       photoUrl={cocktail.strDrinkThumb}
-                      custom={index + 1}
+                      custom={index + 3}
                       variants={animation}
                     />
                   ))}

@@ -150,7 +150,7 @@ const CocktailPage: FC<CocktailProps> = () => {
             className={styles.suggestionsSectionWrapper}
             initial='hidden'
             whileInView='visible'
-            viewport={{ amount: 0.2, once: true }}
+            viewport={{ amount: 0.3, once: true }}
           >
             <Container>
               <motion.h2 
