@@ -1,11 +1,13 @@
 .contentWrapper {
     min-height: calc(100vh - 284px);
+    overflow: hidden;
 }
 
 .cocktailSection {
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    
 }
 
 .suggestionsSectionWrapper {

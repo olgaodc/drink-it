@@ -1,5 +1,6 @@
 .cocktailSectionWrapper {
     min-height: calc(100vh - 284px);
+    overflow: hidden;
 }
 
 .cocktailSection {
