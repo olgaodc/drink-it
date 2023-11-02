@@ -5,8 +5,22 @@ import Navbar from "@/components/Navbar/Navbar";
 import Container from "@/components/Container/Container";
 import LargeCard from "@/components/LargeCard/LargeCard";
 import Footer from "@/components/Footer/Footer";
-import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
+import { MPrimaryButton } from "@/components/PrimaryButton/PrimaryButton";
 import Spinner from "@/components/Spinner/Spinner";
+import { motion } from 'framer-motion';
+
+
+const animation = {
+  hidden: {
+    y: 100,
+    opacity: 0,
+  },
+  visible: (custom: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: { delay: custom * 0.2 }
+  }),
+}
 
 
 type CocktailProps = {
@@ -65,7 +79,12 @@ const RandomCocktailPage = () => {
       <div className={styles.cocktailSectionWrapper}>
         {isLoaded ? (
           <Container>
-            <div className={styles.cocktailSection}>
+            <motion.div 
+              className={styles.cocktailSection}
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ amount: 0.2, once: true }}
+            >
               {cocktail && (
                 <LargeCard
                   name={cocktail.strDrink}
@@ -76,8 +95,14 @@ const RandomCocktailPage = () => {
                   glass={cocktail.strGlass}
                 />
               )}
-              <PrimaryButton onClick={getRandomCocktail}>Another cocktail</PrimaryButton>
-            </div>
+              <MPrimaryButton 
+                onClick={getRandomCocktail}
+                custom={5}
+                variants={animation}
+              >
+                Another cocktail
+              </MPrimaryButton>
+            </motion.div>
           </Container>
         ) : <Spinner />}
       </div>

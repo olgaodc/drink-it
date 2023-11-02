@@ -8,6 +8,20 @@ import Footer from '@/components/Footer/Footer';
 import LargeCard from '@/components/LargeCard/LargeCard';
 import SmallCard from '@/components/SmallCard/SmallCard';
 import Spinner from '@/components/Spinner/Spinner';
+import { motion } from 'framer-motion';
+
+
+const animation = {
+  hidden: {
+    y: 100,
+    opacity: 0,
+  },
+  visible: (custom: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: { delay: custom * 0.2 }
+  }),
+}
 
 
 type CocktailProps = {
@@ -132,10 +146,25 @@ const CocktailPage: FC<CocktailProps> = () => {
             </div>
           </Container>
 
-          <div className={styles.suggestionsSectionWrapper}>
+          <motion.div 
+            className={styles.suggestionsSectionWrapper}
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ amount: 0.2, once: true }}
+          >
             <Container>
-              <h2 className={styles.suggestionsTitle}>You might also like</h2>
-              <div className={styles.suggestionsSection}>
+              <motion.h2 
+                className={styles.suggestionsTitle}
+                custom={1}
+                variants={animation}
+              >
+                You might also like
+              </motion.h2>
+              <motion.div 
+                className={styles.suggestionsSection}
+                custom={2}
+                variants={animation}
+              >
                 {similarCocktails && similarCocktails.map((cocktail: CocktailProps) => (
                   <SmallCard
                     key={cocktail.idDrink}
@@ -143,12 +172,14 @@ const CocktailPage: FC<CocktailProps> = () => {
                     name={cocktail.strDrink}
                     photoUrl={cocktail.strDrinkThumb}
                     onClickCocktail={() => handleClick(cocktail)}
+                    // custom={index + 1}
+                    // variants={animation}
                   />
                 ))
                 }
-              </div>
+              </motion.div>
             </Container>
-          </div>
+          </motion.div>
         </div>
       ) : <Spinner />
       }

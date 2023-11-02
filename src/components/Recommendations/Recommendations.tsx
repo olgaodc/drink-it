@@ -7,12 +7,35 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CardImage1 from '../../assets/pink-moon.jpg';
 import CardImage2 from '../../assets/mojito.jpg';
-import CardImage3 from   '../../assets/pure-passion.jpg';
-import CardImage4 from  '../../assets/mulled-wine.jpg';
+import CardImage3 from '../../assets/pure-passion.jpg';
+import CardImage4 from '../../assets/mulled-wine.jpg';
 import CardImage5 from '../../assets/raspberry-julep.jpg';
-import CardImage6 from '../../assets/winter-rita.jpg'; 
-import CardImage7 from '../../assets/pina-colada.jpg'; 
+import CardImage6 from '../../assets/winter-rita.jpg';
+import CardImage7 from '../../assets/pina-colada.jpg';
 import CardImage8 from '../../assets/gin-and-tonic.jpg';
+import { motion } from 'framer-motion';
+
+const textAnimation = {
+  hidden: {
+    y: 100,
+    opacity: 0,
+  },
+  visible: (custom: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: { delay: custom * 0.2 }
+  }),
+}
+
+const imageAnimation = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (custom: number) => ({
+    opacity: 1,
+    transition: { delay: custom * 0.2 }
+  }),
+}
 
 
 const images = [
@@ -87,34 +110,62 @@ const Recommendations = () => {
     <div className={styles.recommendationsContainer}>
       <Container>
         <div className={styles.recommendationsWrapper}>
-          <div className={styles.recommendations}>
-            <h3 className={styles.title}>We recommended</h3>
-            <article className={styles.description}>We all love cheeky cocktail, who doesn't? Whether it's sweet or sour, gin or vodka, we have a cocktail to suit you. Get ahead of the crowd out what we have to offer and find you new favorite. Call it "research", we won't tell anyone...</article>
-          </div>
+          <motion.div
+            className={styles.recommendations}
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ amount: 0.2, once: true }}
+          >
+            <motion.h3
+              className={styles.title}
+              custom={1}
+              variants={textAnimation}
+            >
+              We recommended
+            </motion.h3>
+            <motion.article
+              className={styles.description}
+              custom={2}
+              variants={textAnimation}
+            >
+              We all love cheeky cocktail, who doesn't? Whether it's sweet or sour, gin or vodka, we have a cocktail to suit you. Get ahead of the crowd out what we have to offer and find you new favorite. Call it "research", we won't tell anyone...
+            </motion.article>
+          </motion.div>
         </div>
-        <div className={styles.carouselWrapper}>
+        <motion.div
+          className={styles.carouselWrapper}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ amount: 0.7, once: true }}
+        >
           <Carousel
             responsive={responsive}
             swipeable={true}
             keyBoardControl={true}
           >
-            {images && images.map((image) => (
-              <Link 
-                className={styles.cocktailLink} 
-                key={image.id} 
-                href={`/cocktail/${image.id}`}
+            {images && images.map((image, index) => (
+              <motion.div
+                key={image.id}
+                custom={index + 1}
+                variants={imageAnimation}
               >
-                <Image 
-                  className={styles.cocktailImage} 
-                  src={image.url} 
-                  alt={`${image.name} image`} 
-                />
-                <span className={styles.cocktailTitle}>{image.name}</span>
-              </Link>
+                <Link
+                  className={styles.cocktailLink}
+                  href={`/cocktail/${image.id}`}
+
+                >
+                  <Image
+                    className={styles.cocktailImage}
+                    src={image.url}
+                    alt={`${image.name} image`}
+                  />
+                  <span className={styles.cocktailTitle}>{image.name}</span>
+                </Link>
+              </motion.div>
             )
             )}
           </Carousel>
-        </div>
+        </motion.div>
       </Container>
     </div>
 
