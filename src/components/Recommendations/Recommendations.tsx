@@ -128,7 +128,7 @@ const Recommendations = () => {
               custom={2}
               variants={textAnimation}
             >
-              We all love cheeky cocktail, who doesn't? Whether it's sweet or sour, gin or vodka, we have a cocktail to suit you. Get ahead of the crowd out what we have to offer and find you new favorite. Call it "research", we won't tell anyone...
+              We all love a cheeky cocktail, don't we? Whether you prefer sweet or sour, gin or vodka, we have a cocktail to suit your fancy. Get ahead of the crowd with what we have to offer and find you new favorite. Call it "research", we won't tell anyone...
             </motion.article>
           </motion.div>
         </div>
