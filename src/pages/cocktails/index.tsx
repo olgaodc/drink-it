@@ -3,25 +3,12 @@ import Navbar from '../../components/Navbar/Navbar';
 import styles from './cocktailsPage.module.css';
 import Container from "@/components/Container/Container";
 import axios from "axios";
-import { MSmallCard } from "@/components/SmallCard/SmallCard";
+import SmallCard, { MSmallCard } from "@/components/SmallCard/SmallCard";
 import Footer from "@/components/Footer/Footer";
 import { Empty, Input, Pagination, Select } from "antd";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import Spinner from "@/components/Spinner/Spinner";
 import { motion } from 'framer-motion';
-
-
-const animation = {
-  hidden: {
-    y: 100,
-    opacity: 0,
-  },
-  visible: (custom: number) => ({
-    y: 0,
-    opacity: 1,
-    transition: { delay: custom * 0.2 }
-  }),
-}
 
 type CocktailProps = {
   idDrink: string,
@@ -124,25 +111,12 @@ const CocktailsPage = () => {
   return (
     <>
       {isLoaded ? (
-        <motion.div 
-          className={styles.pageWrapper}
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true }}
-        >
-          <motion.div 
-            className={styles.bgImage} 
-            custom={1}
-            variants={animation}
-          >
+        <div className={styles.pageWrapper}>
+          <div className={styles.bgImage}>
             <Navbar />
-          </motion.div>
+          </div>
           <Container>
-            <motion.div 
-              className={styles.searchBar}
-              custom={2}
-              variants={animation}
-            >
+            <div className={styles.searchBar}>
               <div className={styles.searchTitle}>Search by</div>
               <Select
                 className={styles.cocktailSelect}
@@ -168,7 +142,7 @@ const CocktailsPage = () => {
               >
                 Search
               </PrimaryButton>
-            </motion.div>
+            </div>
           </Container>
 
           <Container>
@@ -179,13 +153,11 @@ const CocktailsPage = () => {
 
                 >
                   {cocktails.slice((page - 1) * pageSize, page * pageSize).map((cocktail, index) => (
-                    <MSmallCard
+                    <SmallCard
                       key={cocktail.idDrink}
                       id={cocktail.idDrink}
                       name={cocktail.strDrink}
                       photoUrl={cocktail.strDrinkThumb}
-                      custom={index + 3}
-                      variants={animation}
                     />
                   ))}
                 </div>
@@ -213,7 +185,7 @@ const CocktailsPage = () => {
           </Container>
 
           <Footer />
-        </motion.div>
+        </div>
       ) : (<Spinner />)}
 
     </>
